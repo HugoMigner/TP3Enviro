@@ -21,6 +21,12 @@ public class Serveur {
 			}
 		}catch( IOException e ) {
 			System.out.println(e.getMessage());
+		}finally {
+			try {
+				serverSocketEcoute.close();
+			}catch(IOException e) {
+				System.out.println( e.getMessage() );
+			}
 		}
 
 	}

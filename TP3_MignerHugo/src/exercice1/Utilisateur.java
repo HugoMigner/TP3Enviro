@@ -21,4 +21,14 @@ public class Utilisateur {
 	public String getMdp() {
 		return this.mdp;
 	}
+	
+	@Override
+	public boolean equals(Object ob) {
+		return (this.nom.equals( ((Utilisateur)ob).getNom() ) && this.mdp.equals( ((Utilisateur)ob).getMdp() ));
+	}
+	
+	@Override
+	public String toString() {
+		return this.nom;
+	}
 }
