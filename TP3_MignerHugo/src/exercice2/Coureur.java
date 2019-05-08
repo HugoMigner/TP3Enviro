@@ -6,7 +6,7 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 
 public class Coureur extends Thread implements ConstantesAffichages {
-	private int vitesse = 10;
+	private int vitesse = 20;
 	private int posX;
 	private int posY;
 	private ImageIcon imageCoureur;
@@ -26,7 +26,7 @@ public class Coureur extends Thread implements ConstantesAffichages {
 		if(this.orientation == 'D') {
 			posX = 20;
 		}else {
-			posX = FENETRE_LARGEUR - 200;
+			posX = FENETRE_LARGEUR - largeur;
 		}
 	}
 	
@@ -36,6 +36,7 @@ public class Coureur extends Thread implements ConstantesAffichages {
 			if(!attente) {
 				avancer();
 			}
+			System.out.println( fini );
 		}
 	}
 	
@@ -47,6 +48,8 @@ public class Coureur extends Thread implements ConstantesAffichages {
 			}else if(this.orientation == 'G') {
 				this.posX -= 5;
 			}
+			
+			
 		} catch ( InterruptedException e ) {
 			System.out.println( e.getMessage() );
 		}
@@ -67,5 +70,13 @@ public class Coureur extends Thread implements ConstantesAffichages {
 	
 	public void setAttente(boolean b) {
 		this.attente = b;
+	}
+	
+	public void setFini(boolean b) {
+		this.fini = b;
+	}
+	
+	public boolean getAttente() {
+		return this.attente;
 	}
 }

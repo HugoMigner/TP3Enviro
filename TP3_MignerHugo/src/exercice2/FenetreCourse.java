@@ -36,10 +36,12 @@ public class FenetreCourse extends JFrame implements ConstantesAffichages, Actio
 		getContentPane().add(btnDemarrer);
 		
 		btnArreter = new JButton("Arr\u00EAter");
+		btnArreter.setEnabled( false );
 		btnArreter.setBounds(249, 327, 89, 23);
 		getContentPane().add(btnArreter);
 		
 		btnContinuer = new JButton("Continuer");
+		btnContinuer.setEnabled( false );
 		btnContinuer.setBounds(346, 327, 89, 23);
 		getContentPane().add(btnContinuer);
 		
@@ -53,9 +55,12 @@ public class FenetreCourse extends JFrame implements ConstantesAffichages, Actio
 	public void run() {
 		while(true) {
 			affiche.repaint();
-			if(affiche.getCoureurD().getPosX() == FENETRE_LARGEUR && affiche.getCoureurG().getPosX() == 0) {
+			//System.out.println( affiche.getCoureurD().getPosX() + " " + FENETRE_LARGEUR + " " + affiche.getCoureurG().getPosX());
+			if(affiche.getCoureurD().getPosX() >= FENETRE_LARGEUR && affiche.getCoureurG().getPosX() <= 0) {
 				btnContinuer.setEnabled( false );
 				btnArreter.setEnabled( false );
+				affiche.getCoureurD().setFini( true );
+				affiche.getCoureurG().setFini( true );
 			}
 			try {
 				Thread.sleep( 10 );
@@ -71,12 +76,17 @@ public class FenetreCourse extends JFrame implements ConstantesAffichages, Actio
 			coureur1.start();
 			coureur2.start();
 			btnDemarrer.setEnabled( false );
+			btnArreter.setEnabled( true );
 		}else if(e.getSource() == btnArreter) {
 			coureur1.setAttente( true );
 			coureur2.setAttente( true );
+			btnArreter.setEnabled( false );
+			btnContinuer.setEnabled( true );
 		}else if(e.getSource() == btnContinuer) {
 			coureur1.setAttente( false );
 			coureur2.setAttente( false );
+			btnArreter.setEnabled( true );
+			btnContinuer.setEnabled( false );
 		}
 	}
 }
