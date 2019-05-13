@@ -23,7 +23,7 @@ public class PanelAffichage extends JPanel implements ConstantesAffichages {
 		Graphics bg = tamponImage.getGraphics();
 		bg.drawImage( IMAGE_SKY.getImage(), 0, 0, this );
 		bg.setFont( new Font("Verdana", Font.BOLD, 18) );
-		bg.drawString( "wow", FENETRE_LARGEUR / 2, 50 );
+		bg.drawString( "Cliquez sur démarrer", FENETRE_LARGEUR / 2 - 100, 50 );
 		bg.drawImage( IMAGE_EAU.getImage(), 0, SKY_HAUTEUR, this );
 		bg.drawImage( coureurD.getImageCoureur(), coureurD.getPosX(), coureurD.getPosY(), this );
 		bg.drawImage( coureurG.getImageCoureur(), coureurG.getPosX(), coureurG.getPosY(), this );
